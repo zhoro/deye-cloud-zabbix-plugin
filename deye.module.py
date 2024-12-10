@@ -128,7 +128,7 @@ def get_station_list(access_token):
             access_token = refresh_access_token()
             return get_station_list(access_token)
         else:
-            raise ValueError('Failed to get station devices')
+            raise ValueError('Failed to get station devices: ' + response_data.get('msg'))
     except requests.exceptions.HTTPError as err:
         print(f"HTTP error occurred: {err}")
     except Exception as err:
@@ -157,7 +157,7 @@ def get_station_latest(access_token, station_id):
             access_token = refresh_access_token()
             return get_station_latest(access_token, station_id)
         else:
-            raise ValueError('Failed to get station latest data')
+            raise ValueError('Failed to get station latest data: ' + response_data.get('msg'))
     except requests.exceptions.HTTPError as err:
         print(f"HTTP error occurred: {err}")
     except Exception as err:
